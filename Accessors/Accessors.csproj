@@ -42,6 +42,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -53,10 +57,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseAccessor.cs" />
     <Compile Include="DatabaseContext.cs" />
+    <Compile Include="EquipmentAccessor.cs" />
     <Compile Include="Migrations\201611100236480_Init.cs" />
     <Compile Include="Migrations\201611100236480_Init.Designer.cs">
       <DependentUpon>201611100236480_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611101945221_AddEquipmentTypeAndSchedule.cs" />
+    <Compile Include="Migrations\201611101945221_AddEquipmentTypeAndSchedule.Designer.cs">
+      <DependentUpon>201611101945221_AddEquipmentTypeAndSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611102108187_AddEquipmentTypeId.cs" />
+    <Compile Include="Migrations\201611102108187_AddEquipmentTypeId.Designer.cs">
+      <DependentUpon>201611102108187_AddEquipmentTypeId.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,14 +80,28 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Contracts\Contracts.csproj">
+      <Project>{27F29C2A-C2F9-4114-BD5F-02A38B15A99C}</Project>
+      <Name>Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataContracts\DataContracts.csproj">
       <Project>{5B611B43-5063-47FA-B588-2DECA5D20250}</Project>
       <Name>DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{26e9bc8b-0986-4631-9c02-e2fead4891e1}</Project>
+      <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611100236480_Init.resx">
       <DependentUpon>201611100236480_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611101945221_AddEquipmentTypeAndSchedule.resx">
+      <DependentUpon>201611101945221_AddEquipmentTypeAndSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611102108187_AddEquipmentTypeId.resx">
+      <DependentUpon>201611102108187_AddEquipmentTypeId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

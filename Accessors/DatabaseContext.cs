@@ -16,6 +16,10 @@ namespace BeerScheduler.Accessors
 
         public IDbSet<Equipment> Equipment { get; set; }
 
+        public IDbSet<EquipmentSchedule> EquipmentSchedules { get; set; }
+
+        public IDbSet<EquipmentType> EquipmentTypes { get; set; }
+
         public static DatabaseContext Create()
         {
             Database.SetInitializer<DatabaseContext>(null);
