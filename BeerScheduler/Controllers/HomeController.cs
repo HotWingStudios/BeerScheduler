@@ -13,12 +13,11 @@ namespace BeerScheduler.Controllers
 {
     public class HomeController : BaseController
     {
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             Logger.Log($"{nameof(HomeController)}.{nameof(Index)}", TraceEventType.Information);
-
-            var equipment = await EquipmentManager.GetEquipment(1);
-            return View(equipment);
+            
+            return View();
         }
 
         public ActionResult About()

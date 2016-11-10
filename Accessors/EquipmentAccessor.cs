@@ -19,6 +19,22 @@ namespace BeerScheduler.Accessors
             }
         }
 
+        public async Task<IEnumerable<EquipmentSchedule>> GetEquipmentSchedule(long equipmentId)
+        {
+            using (var db = CreateDatabaseContext())
+            {
+                return await db.EquipmentSchedules.Where(x => !x.Deleted && x.EquipmentId == equipmentId).ToListAsync();
+            }
+        }
+
+        public async Task<IEnumerable<EquipmentType>> GetEquipmentTypes()
+        {
+            using (var db = CreateDatabaseContext())
+            {
+                return await db.EquipmentTypes.Where(x => !x.Deleted).ToListAsync();
+            }
+        }
+
         public async Task<Equipment> SaveEquipment(Equipment equipment)
         {
             using (var db = CreateDatabaseContext())
@@ -35,6 +51,8 @@ namespace BeerScheduler.Accessors
                     // update equipment if it exists
                     dbEquipment.Description = equipment.Description;
                     dbEquipment.Name = equipment.Name;
+                    dbEquipment.Deleted = equipment.Deleted;
+                    dbEquipment.EquipmentType = equipment.EquipmentType;
                 }
 
                 await db.SaveChangesAsync();

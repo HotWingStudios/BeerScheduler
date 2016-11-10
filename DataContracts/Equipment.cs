@@ -8,11 +8,13 @@ namespace BeerScheduler.DataContracts
 {
     public class Equipment
     {
-        public int EquipmentId { get; set; }
+        public long EquipmentId { get; set; }
 
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public long EquipmentTypeId { get; set; }
 
         public EquipmentType EquipmentType { get; set; }
 
