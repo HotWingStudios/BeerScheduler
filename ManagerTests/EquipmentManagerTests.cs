@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using BeerScheduler.Managers;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace BeerScheduler.ManagerTests
     {
         #region Fields
 
-
+        private EquipmentManager manager;
 
         #endregion
 
@@ -24,7 +25,17 @@ namespace BeerScheduler.ManagerTests
 
         #region Methods
 
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            manager = new EquipmentManager();
+        }
 
+        [TestMethod]
+        public void EquipmentManager_Init()
+        {
+            Assert.IsNotNull(manager);
+        }
 
         #endregion
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using BeerScheduler.DataContracts;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace BeerScheduler.ModelTests.EF_Models
     {
         #region Fields
 
-
+        private Equipment model;
 
         #endregion
 
@@ -24,7 +25,17 @@ namespace BeerScheduler.ModelTests.EF_Models
 
         #region Methods
 
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            model = new Equipment();
+        }
 
+        [TestMethod]
+        public void Equipment_Init()
+        {
+            Assert.IsNotNull(model);
+        }
 
         #endregion
     }
