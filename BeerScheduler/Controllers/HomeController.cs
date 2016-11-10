@@ -1,6 +1,9 @@
-﻿using BeerScheduler.Web.Controllers;
+﻿using BeerScheduler.Utilities;
+using BeerScheduler.Web.Controllers;
+using log4net;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -12,6 +15,8 @@ namespace BeerScheduler.Controllers
     {
         public async Task<ActionResult> Index()
         {
+            Logger.Log($"{nameof(HomeController)}.{nameof(Index)}", TraceEventType.Information);
+
             var equipment = await EquipmentManager.GetEquipment(1);
             return View(equipment);
         }

@@ -10,26 +10,15 @@ namespace BeerScheduler.Utilities
         {
             get
             {
-                return LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+                return LogManager.GetLogger("BeerScheduler");
             }
         }
 
-        /// <summary>
-        /// Log a message to the configured logging append with an optional level and optional exception
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="severity">Severity.  Critical -> Fatal, Error -> Error, Information/Verbose -> Info, Warning -> Warn, (default) -> Info</param>
-        /// <param name="exception"></param>
         public static void Log(
             string message,
             TraceEventType severity = TraceEventType.Verbose,
             Exception exception = null)
         {
-            ////     Fatal error or application crash.        //Critical = 1,
-            ////     Recoverable error.                       //Error = 2,
-            ////     Noncritical problem.                     //Warning = 4,
-            ////     Informational message.                   //Information = 8,
-            ////     Debugging trace.                         //Verbose = 16,
             try
             {
                 switch (severity)
@@ -42,7 +31,7 @@ namespace BeerScheduler.Utilities
                         break;
                     case TraceEventType.Information:
                     case TraceEventType.Verbose:
-                        Log4NetLogger.Info(message, exception);
+                        Log4NetLogger.Info(message);
                         break;
                     case TraceEventType.Warning:
                         Log4NetLogger.Warn(message, exception);
