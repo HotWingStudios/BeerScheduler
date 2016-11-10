@@ -64,6 +64,10 @@
     <Compile Include="Migrations\201611100236480_Init.Designer.cs">
       <DependentUpon>201611100236480_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611101945221_AddEquipmentTypeAndSchedule.cs" />
+    <Compile Include="Migrations\201611101945221_AddEquipmentTypeAndSchedule.Designer.cs">
+      <DependentUpon>201611101945221_AddEquipmentTypeAndSchedule.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -88,6 +92,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611100236480_Init.resx">
       <DependentUpon>201611100236480_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611101945221_AddEquipmentTypeAndSchedule.resx">
+      <DependentUpon>201611101945221_AddEquipmentTypeAndSchedule.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

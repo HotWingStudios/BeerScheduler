@@ -13,5 +13,13 @@ namespace BeerScheduler.DataContracts
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public EquipmentType EquipmentType { get; set; }
+
+        public DateTime DateAquired { get; set; }
+
+        public virtual List<EquipmentSchedule> Schedule { get; set; }
+
+        public bool Deleted { get; set; }
     }
 }
