@@ -101,6 +101,10 @@
       <Project>{06418DC5-590B-4B5C-9C78-975B27AF8A9D}</Project>
       <Name>BeerScheduler.Web</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataContracts\DataContracts.csproj">
+      <Project>{5B611B43-5063-47FA-B588-2DECA5D20250}</Project>
+      <Name>DataContracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

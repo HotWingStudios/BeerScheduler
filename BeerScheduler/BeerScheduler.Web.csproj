@@ -302,10 +302,6 @@
       <Project>{411b5296-2c8c-442d-8d7d-3630784cf05f}</Project>
       <Name>Accessors</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ClassLibrary1\Managers.csproj">
-      <Project>{ed40f814-97b7-4861-96c2-329de7c1c6da}</Project>
-      <Name>Managers</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Contracts\Contracts.csproj">
       <Project>{27f29c2a-c2f9-4114-bd5f-02a38b15a99c}</Project>
       <Name>Contracts</Name>
@@ -321,6 +317,10 @@
     <ProjectReference Include="..\Identity\Identity.csproj">
       <Project>{b4dc0f62-3558-4336-90b5-6a4abcc134cd}</Project>
       <Name>Identity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Managers\Managers.csproj">
+      <Project>{ed40f814-97b7-4861-96c2-329de7c1c6da}</Project>
+      <Name>Managers</Name>
     </ProjectReference>
     <ProjectReference Include="..\Utilities\Utilities.csproj">
       <Project>{26e9bc8b-0986-4631-9c02-e2fead4891e1}</Project>
