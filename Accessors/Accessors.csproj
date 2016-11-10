@@ -53,7 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseAccessor.cs" />
     <Compile Include="DatabaseContext.cs" />
+    <Compile Include="EquipmentAccessor.cs" />
     <Compile Include="Migrations\201611100236480_Init.cs" />
     <Compile Include="Migrations\201611100236480_Init.Designer.cs">
       <DependentUpon>201611100236480_Init.cs</DependentUpon>
@@ -66,9 +68,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Contracts\Contracts.csproj">
+      <Project>{27F29C2A-C2F9-4114-BD5F-02A38B15A99C}</Project>
+      <Name>Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataContracts\DataContracts.csproj">
       <Project>{5B611B43-5063-47FA-B588-2DECA5D20250}</Project>
       <Name>DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{26e9bc8b-0986-4631-9c02-e2fead4891e1}</Project>
+      <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

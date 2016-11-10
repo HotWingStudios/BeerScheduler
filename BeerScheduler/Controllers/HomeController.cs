@@ -1,16 +1,19 @@
-﻿using System;
+﻿using BeerScheduler.Web.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace BeerScheduler.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            var equipment = await EquipmentManager.GetEquipment(1);
+            return View(equipment);
         }
 
         public ActionResult About()
