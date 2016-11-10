@@ -281,6 +281,36 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Accessors\Accessors.csproj">
+      <Project>{411b5296-2c8c-442d-8d7d-3630784cf05f}</Project>
+      <Name>Accessors</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClassLibrary1\Managers.csproj">
+      <Project>{ed40f814-97b7-4861-96c2-329de7c1c6da}</Project>
+      <Name>Managers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Contracts\Contracts.csproj">
+      <Project>{27f29c2a-c2f9-4114-bd5f-02a38b15a99c}</Project>
+      <Name>Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataContracts\DataContracts.csproj">
+      <Project>{5b611b43-5063-47fa-b588-2deca5d20250}</Project>
+      <Name>DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Engines\Engines.csproj">
+      <Project>{cf9d86ae-b46d-41bc-9a0a-cbe53fcda838}</Project>
+      <Name>Engines</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Identity\Identity.csproj">
+      <Project>{b4dc0f62-3558-4336-90b5-6a4abcc134cd}</Project>
+      <Name>Identity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{26e9bc8b-0986-4631-9c02-e2fead4891e1}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
