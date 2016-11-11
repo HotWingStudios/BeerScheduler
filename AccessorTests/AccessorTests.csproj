@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="BaseTestAccessor.cs" />
     <Compile Include="EquipmentAccessorTests.cs" />
+    <Compile Include="EquipmentTypeAccessorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
