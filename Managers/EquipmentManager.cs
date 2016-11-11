@@ -39,7 +39,7 @@ namespace BeerScheduler.Managers
             return await EquipmentAccessor.GetEquipment(equipmentId);
         }
 
-        public async Task<Equipment> GetEquipmentByType(long equipmentTypeId)
+        public async Task<IEnumerable<Equipment>> GetEquipmentByType(long equipmentTypeId)
         {
             return await EquipmentAccessor.GetEquipmentByType(equipmentTypeId);
         }

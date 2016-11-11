@@ -127,6 +127,108 @@ namespace BeerScheduler.ManagerTests
             EquipmentAccessor.Assert();
         }
 
+        [TestMethod]
+        public void EquipmentManager_GetEquipment()
+        {
+            EquipmentAccessor.Arrange(x => x.GetEquipment(Arg.IsAny<long>()))
+                .Returns(Task.FromResult(new Equipment()))
+                .OccursOnce();
+
+            var res = manager.GetEquipment(5).Result;
+            Assert.IsNotNull(res);
+            EquipmentAccessor.Assert();
+        }
+
+        [TestMethod]
+        public void EquipmentManager_GetEquipment_Values()
+        {
+            EquipmentAccessor.Arrange(x => x.GetEquipment(5))
+                .Returns(Task.FromResult(new Equipment { Name = "test" }))
+                .OccursOnce();
+
+            var res = manager.GetEquipment(5).Result;
+            Assert.IsNotNull(res);
+            Assert.AreEqual("test", res.Name);
+            EquipmentAccessor.Assert();
+        }
+
+        [TestMethod]
+        public void EquipmentManager_GetEquipmentByType()
+        {
+            EquipmentAccessor.Arrange(x => x.GetEquipmentByType(Arg.IsAny<long>()))
+                .Returns(Task.FromResult(Enumerable.Empty<Equipment>()))
+                .OccursOnce();
+
+            var res = manager.GetEquipmentByType(5).Result;
+            Assert.IsNotNull(res);
+            EquipmentAccessor.Assert();
+        }
+
+        [TestMethod]
+        public void EquipmentManager_GetEquipmentByType_Values()
+        {
+            EquipmentAccessor.Arrange(x => x.GetEquipmentByType(5))
+                .Returns(Task.FromResult(new List<Equipment> { new Equipment(), new Equipment() }.AsEnumerable()))
+                .OccursOnce();
+
+            var res = manager.GetEquipmentByType(5).Result;
+            Assert.IsNotNull(res);
+            Assert.AreEqual(2, res.Count());
+            EquipmentAccessor.Assert();
+        }
+
+        [TestMethod]
+        public void EquipmentManager_GetEquipmentSchedule()
+        {
+            EquipmentAccessor.Arrange(x => x.GetEquipmentSchedule(Arg.IsAny<long>()))
+                .Returns(Task.FromResult(Enumerable.Empty<EquipmentSchedule>()))
+                .OccursOnce();
+
+            var res = manager.GetEquipmentSchedule(5).Result;
+            Assert.IsNotNull(res);
+            EquipmentAccessor.Assert();
+        }
+
+        [TestMethod]
+        public void EquipmentManager_GetEquipmentSchedule_Values()
+        {
+            EquipmentAccessor.Arrange(x => x.GetEquipmentSchedule(5))
+                .Returns(Task.FromResult(new List<EquipmentSchedule> { new EquipmentSchedule(), new EquipmentSchedule() }.AsEnumerable()))
+                .OccursOnce();
+
+            var res = manager.GetEquipmentSchedule(5).Result;
+            Assert.IsNotNull(res);
+            Assert.AreEqual(2, res.Count());
+            EquipmentAccessor.Assert();
+        }
+
+        [TestMethod]
+        public void EquipmentManager_SaveEquipment()
+        {
+            EquipmentAccessor.Arrange(x => x.SaveEquipment(Arg.IsAny<Equipment>()))
+                .Returns(Task.FromResult(new Equipment()))
+                .OccursOnce();
+
+            var res = manager.SaveEquipment(new Equipment()).Result;
+            Assert.IsNotNull(res);
+            EquipmentAccessor.Assert();
+        }
+
+        [TestMethod]
+        public void EquipmentManager_SaveEquipment_Values()
+        {
+            var equip = new Equipment { EquipmentId = 5 };
+            var saveTask = Task<Equipment>.Factory.StartNew(() => { return equip; });
+            EquipmentAccessor.Arrange(x => x.SaveEquipment(equip))
+                .Returns(saveTask)
+                .OccursOnce();
+
+            var res = manager.SaveEquipment(equip).Result;
+            saveTask.Wait();
+            Assert.IsNotNull(res);
+            EquipmentAccessor.Assert();
+        }
+
         #endregion
     }
 }
