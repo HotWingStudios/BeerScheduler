@@ -26,19 +26,24 @@ namespace BeerScheduler.Managers
             }
         }
 
+        public async Task<IEnumerable<Equipment>> GetAllEquipment()
+        {
+            return await EquipmentAccessor.GetAllEquipment();
+        }
+
         public async Task<Equipment> GetEquipment(long equipmentId)
         {
             return await EquipmentAccessor.GetEquipment(equipmentId);
         }
 
+        public async Task<Equipment> GetEquipmentByType(long equipmentTypeId)
+        {
+            return await EquipmentAccessor.GetEquipmentByType(equipmentTypeId);
+        }
+
         public async Task<IEnumerable<EquipmentSchedule>> GetEquipmentSchedule(long equipmentId)
         {
             return await EquipmentAccessor.GetEquipmentSchedule(equipmentId);
-        }
-
-        public async Task<IEnumerable<EquipmentType>> GetEquipmentTypes()
-        {
-            return await EquipmentAccessor.GetEquipmentTypes();
         }
 
         public async Task<Equipment> SaveEquipment(Equipment equipment)

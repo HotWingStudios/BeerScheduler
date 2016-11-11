@@ -11,10 +11,12 @@ namespace BeerScheduler.Contracts
     {
         Task<Equipment> SaveEquipment(Equipment equipment);
 
+        Task<IEnumerable<Equipment>> GetAllEquipment();
+
         Task<Equipment> GetEquipment(long equipmentId);
 
-        Task<IEnumerable<EquipmentSchedule>> GetEquipmentSchedule(long equipmentId);
+        Task<Equipment> GetEquipmentByType(long equipmentTypeId);
 
-        Task<IEnumerable<EquipmentType>> GetEquipmentTypes();
+        Task<IEnumerable<EquipmentSchedule>> GetEquipmentSchedule(long equipmentId);
     }
 }

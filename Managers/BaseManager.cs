@@ -14,6 +14,8 @@ namespace BeerScheduler.Managers
 
         private IEquipmentAccessor equipmentAccessor;
 
+        private IEquipmentTypeAccessor equipmentTypeAccessor;
+
         #endregion
 
         #region Properties
@@ -27,6 +29,18 @@ namespace BeerScheduler.Managers
             set
             {
                 equipmentAccessor = value;
+            }
+        }
+
+        public IEquipmentTypeAccessor EquipmentTypeAccessor
+        {
+            get
+            {
+                return equipmentTypeAccessor ?? (equipmentTypeAccessor = ClassFactory.CreateClass<IEquipmentTypeAccessor>());
+            }
+            set
+            {
+                equipmentTypeAccessor = value;
             }
         }
 
