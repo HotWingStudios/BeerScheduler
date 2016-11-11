@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="BaseManager.cs" />
     <Compile Include="EquipmentManager.cs" />
+    <Compile Include="EquipmentTypeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

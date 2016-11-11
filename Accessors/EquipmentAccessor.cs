@@ -11,6 +11,14 @@ namespace BeerScheduler.Accessors
 {
     public class EquipmentAccessor : BaseAccessor, IEquipmentAccessor
     {
+        public async Task<IEnumerable<Equipment>> GetAllEquipment()
+        {
+            using (var db = CreateDatabaseContext())
+            {
+                return await db.Equipment.Where(x => !x.Deleted).ToListAsync();
+            }
+        }
+
         public async Task<Equipment> GetEquipment(long equipmentId)
         {
             using (var db = CreateDatabaseContext())
@@ -19,19 +27,19 @@ namespace BeerScheduler.Accessors
             }
         }
 
+        public async Task<Equipment> GetEquipmentByType(long equipmentTypeId)
+        {
+            using (var db = CreateDatabaseContext())
+            {
+                return await db.Equipment.FirstOrDefaultAsync(x => x.EquipmentTypeId == equipmentTypeId);
+            }
+        }
+
         public async Task<IEnumerable<EquipmentSchedule>> GetEquipmentSchedule(long equipmentId)
         {
             using (var db = CreateDatabaseContext())
             {
                 return await db.EquipmentSchedules.Where(x => !x.Deleted && x.EquipmentId == equipmentId).ToListAsync();
-            }
-        }
-
-        public async Task<IEnumerable<EquipmentType>> GetEquipmentTypes()
-        {
-            using (var db = CreateDatabaseContext())
-            {
-                return await db.EquipmentTypes.Where(x => !x.Deleted).ToListAsync();
             }
         }
 

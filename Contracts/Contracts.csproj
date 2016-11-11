@@ -107,6 +107,8 @@
   <ItemGroup>
     <Compile Include="IEquipmentAccessor.cs" />
     <Compile Include="IEquipmentManager.cs" />
+    <Compile Include="IEquipmentTypeAccessor.cs" />
+    <Compile Include="IEquipmentTypeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

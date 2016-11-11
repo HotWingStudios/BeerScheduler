@@ -1,0 +1,51 @@
+﻿@model BeerScheduler.Web.Models.ManageEquipmentTypesViewModel
+
+@{
+    ViewBag.Title = "Manage Equipment Types";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ManageEquipmentTypes</h2>
+
+<br/>
+@using (Html.BeginForm("AddEquipmentType", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="h3">Add Equipment Type</h2>
+            <div class="form-inline">
+                <div class="form-group">
+                    <label class="sr-only" for="emailAddress">Equipment Type</label>
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", required = "required", type = "text", id = "name", PlaceHolder = "Type Name" })
+                    @Html.ValidationMessageFor(m => m.Name, string.Empty, new { @class = "text-danger" })
+                </div>
+                <input type="submit" class="btn btn-primary" value="Add Type" />
+            </div>
+        </div>
+    </div>
+}
+<br/>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.EquipmentTypes)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.EquipmentTypeId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.EquipmentTypeId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.EquipmentTypeId })*@
+        </td>
+    </tr>
+}
+
+</table>

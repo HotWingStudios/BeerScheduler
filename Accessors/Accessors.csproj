@@ -60,6 +60,7 @@
     <Compile Include="BaseAccessor.cs" />
     <Compile Include="DatabaseContext.cs" />
     <Compile Include="EquipmentAccessor.cs" />
+    <Compile Include="EquipmentTypeAccessor.cs" />
     <Compile Include="Migrations\201611100236480_Init.cs" />
     <Compile Include="Migrations\201611100236480_Init.Designer.cs">
       <DependentUpon>201611100236480_Init.cs</DependentUpon>
