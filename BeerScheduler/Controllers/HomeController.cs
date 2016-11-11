@@ -17,8 +17,6 @@ namespace BeerScheduler.Controllers
     {
         public ActionResult Index()
         {
-            Logger.Log($"{nameof(HomeController)}.{nameof(Index)}", TraceEventType.Information);
-            
             return View();
         }
 
@@ -68,6 +66,13 @@ namespace BeerScheduler.Controllers
             var model = new ManageEquipmentTypesViewModel();
             model.EquipmentTypes = await EquipmentTypeManager.GetEquipmentTypes();
             return View("ManageEquipmentTypes", model);
+        }
+
+        public async Task<ActionResult> DeleteEquipmentType(long equipmentTypeId)
+        {
+            await EquipmentTypeManager.DeleteEquipmentType(equipmentTypeId);
+
+            return RedirectToAction("ManageEquipmentTypes");
         }
     }
 }

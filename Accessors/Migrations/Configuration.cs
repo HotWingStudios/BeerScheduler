@@ -1,5 +1,6 @@
 namespace BeerScheduler.Accessors.Migrations
 {
+    using DataContracts;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -27,6 +28,8 @@ namespace BeerScheduler.Accessors.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            context.EquipmentTypes.AddOrUpdate(x => x.EquipmentTypeId, new EquipmentType() { EquipmentTypeId = 1, Name = "Not Specified" });
         }
     }
 }

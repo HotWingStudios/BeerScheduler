@@ -60,7 +60,7 @@ namespace BeerScheduler.Accessors
                     dbEquipment.Description = equipment.Description;
                     dbEquipment.Name = equipment.Name;
                     dbEquipment.Deleted = equipment.Deleted;
-                    dbEquipment.EquipmentType = equipment.EquipmentType;
+                    dbEquipment.EquipmentTypeId = equipment.EquipmentTypeId;
                 }
 
                 await db.SaveChangesAsync();
