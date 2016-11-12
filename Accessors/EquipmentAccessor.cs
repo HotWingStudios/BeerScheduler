@@ -27,11 +27,11 @@ namespace BeerScheduler.Accessors
             }
         }
 
-        public async Task<Equipment> GetEquipmentByType(long equipmentTypeId)
+        public async Task<IEnumerable<Equipment>> GetEquipmentByType(long equipmentTypeId)
         {
             using (var db = CreateDatabaseContext())
             {
-                return await db.Equipment.FirstOrDefaultAsync(x => x.EquipmentTypeId == equipmentTypeId);
+                return await db.Equipment.Where(x => x.EquipmentTypeId == equipmentTypeId).ToListAsync();
             }
         }
 
@@ -60,7 +60,8 @@ namespace BeerScheduler.Accessors
                     dbEquipment.Description = equipment.Description;
                     dbEquipment.Name = equipment.Name;
                     dbEquipment.Deleted = equipment.Deleted;
-                    dbEquipment.EquipmentType = equipment.EquipmentType;
+                    dbEquipment.EquipmentTypeId = equipment.EquipmentTypeId;
+                    dbEquipment.DateAquired = equipment.DateAquired;
                 }
 
                 await db.SaveChangesAsync();

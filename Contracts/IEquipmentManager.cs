@@ -16,7 +16,7 @@ namespace BeerScheduler.Contracts
 
         Task<Equipment> GetEquipment(long equipmentId);
 
-        Task<Equipment> GetEquipmentByType(long equipmentTypeId);
+        Task<IEnumerable<Equipment>> GetEquipmentByType(long equipmentTypeId);
 
         Task<bool> DeleteEquipment(long equipmentId);
 

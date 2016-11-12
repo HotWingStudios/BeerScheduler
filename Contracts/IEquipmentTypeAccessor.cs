@@ -9,6 +9,8 @@ namespace BeerScheduler.Contracts
 {
     public interface IEquipmentTypeAccessor
     {
+        Task<EquipmentType> GetEquipmentType(long equipmentTypeId);
+
         Task<EquipmentType> SaveEquipmentType(EquipmentType equipmentType);
 
         Task<IEnumerable<EquipmentType>> GetEquipmentTypes();

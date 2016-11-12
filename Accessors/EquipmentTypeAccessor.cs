@@ -11,6 +11,14 @@ namespace BeerScheduler.Accessors
 {
     public class EquipmentTypeAccessor : BaseAccessor, IEquipmentTypeAccessor
     {
+        public async Task<EquipmentType> GetEquipmentType(long equipmentTypeId)
+        {
+            using (var db = CreateDatabaseContext())
+            {
+                return await db.EquipmentTypes.FirstOrDefaultAsync(x => !x.Deleted && x.EquipmentTypeId == equipmentTypeId);
+            }
+        }
+
         public async Task<IEnumerable<EquipmentType>> GetEquipmentTypes()
         {
             using (var db = CreateDatabaseContext())

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BeerScheduler.DataContracts;
+using BeerScheduler.Utilities;
+using System.Diagnostics;
 
 namespace BeerScheduler.Managers
 {
@@ -20,8 +22,9 @@ namespace BeerScheduler.Managers
                 await EquipmentAccessor.SaveEquipment(equipment);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                Logger.Log("Could not delete equipment", TraceEventType.Error, ex);
                 return false;
             }
         }
@@ -36,7 +39,7 @@ namespace BeerScheduler.Managers
             return await EquipmentAccessor.GetEquipment(equipmentId);
         }
 
-        public async Task<Equipment> GetEquipmentByType(long equipmentTypeId)
+        public async Task<IEnumerable<Equipment>> GetEquipmentByType(long equipmentTypeId)
         {
             return await EquipmentAccessor.GetEquipmentByType(equipmentTypeId);
         }
