@@ -154,7 +154,7 @@ namespace BeerScheduler.AccessorTests
 
             var res = accessor.SaveEquipment(equipment).Result;
             Assert.IsNotNull(res);
-            Assert.AreEqual(4, MockDatabaseContext.Equipment.Count());
+            Assert.AreEqual(5, MockDatabaseContext.Equipment.Count());
             Assert.AreEqual("New Equipment", MockDatabaseContext.Equipment.First(x => x.EquipmentId == 3).Name);
             Assert.AreEqual("New Description", MockDatabaseContext.Equipment.First(x => x.EquipmentId == 3).Description);
             Assert.AreEqual(new DateTime(2015, 11, 11), MockDatabaseContext.Equipment.First(x => x.EquipmentId == 3).DateAquired);
