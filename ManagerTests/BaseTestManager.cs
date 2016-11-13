@@ -15,6 +15,8 @@ namespace BeerScheduler.ManagerTests
 
         private IEquipmentAccessor equipmentAccessor;
 
+        private IEquipmentTypeAccessor equipmentTypeAccessor;
+
         #endregion
 
         #region Properties
@@ -24,6 +26,14 @@ namespace BeerScheduler.ManagerTests
             get
             {
                 return equipmentAccessor ?? (equipmentAccessor = Mock.Create<IEquipmentAccessor>());
+            }
+        }
+
+        public IEquipmentTypeAccessor EquipmentTypeAccessor
+        {
+            get
+            {
+                return equipmentTypeAccessor ?? (equipmentTypeAccessor = Mock.Create<IEquipmentTypeAccessor>());
             }
         }
 
