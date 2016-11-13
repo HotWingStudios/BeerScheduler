@@ -1,11 +1,7 @@
-language: csharp
-solution: BeerScheduler.sln
+language: c
+
 install:
-  - nuget restore BeerScheduler.sln
-  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+  - sudo apt-get install mono-devel mono-gmcs nunit-console libfbembed2.5
+
 script:
-  - xbuild /p:Configuration=Release BeerScheduler.sln
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./ManagerTests/bin/Release/BeerScheduler.ManagerTests.dll
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./AccessorTests/bin/Release/BeerScheduler.AccessorTests.dll
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./ModelTests/bin/Release/BeerScheduler.ModelTests.dll
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./ControllerTests/bin/Release/BeerScheduler.ControllerTests.dll
+  - xbuild CI.proj
