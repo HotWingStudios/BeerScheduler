@@ -83,7 +83,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BaseTestManager.cs" />
-    <Compile Include="TestShim.cs" />
     <Compile Include="EquipmentManagerTests.cs" />
     <Compile Include="EquipmentTypeManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
