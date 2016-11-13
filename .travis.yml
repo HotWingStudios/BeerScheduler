@@ -4,8 +4,8 @@ install:
   - nuget restore BeerScheduler.sln
   - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 script:
-  - xbuild /p:Configuration=Debug BeerScheduler.sln
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./ManagerTests/bin/Debug/BeerScheduler.ManagerTests.dll
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./AccessorTests/bin/Debug/BeerScheduler.AccessorTests.dll
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./ModelTests/bin/Debug/BeerScheduler.ModelTests.dll
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./ControllerTests/bin/Debug/BeerScheduler.ControllerTests.dll
+  - xbuild /p:Configuration=Reslease BeerScheduler.sln
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./ManagerTests/bin/Reslease/BeerScheduler.ManagerTests.dll
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./AccessorTests/bin/Reslease/BeerScheduler.AccessorTests.dll
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./ModelTests/bin/Reslease/BeerScheduler.ModelTests.dll
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./ControllerTests/bin/Reslease/BeerScheduler.ControllerTests.dll
