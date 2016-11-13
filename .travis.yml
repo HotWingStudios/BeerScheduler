@@ -6,3 +6,6 @@ before_script:
   - nuget restore BeerScheduler.sln
 after_script:
   - nunit-console ManagerTests\bin\Debug\BeerScheduler.ManagerTests.dll
+  - nunit-console AccessorTests\bin\Debug\BeerScheduler.AccessorTests.dll
+  - nunit-console ModelTests\bin\Debug\BeerScheduler.ModelTests.dll
+  - nunit-console ControllerTests\bin\Debug\BeerScheduler.ControllerTests.dll
