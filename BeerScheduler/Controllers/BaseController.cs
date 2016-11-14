@@ -16,9 +16,23 @@ namespace BeerScheduler.Web.Controllers
 
         private IEquipmentTypeManager equipmentTypeManager;
 
+        private IUserManager userManager;
+
         #endregion
 
         #region Properties
+
+        public IUserManager UserManager
+        {
+            get
+            {
+                return userManager ?? (userManager = ClassFactory.CreateClass<IUserManager>());
+            }
+            set
+            {
+                userManager = value;
+            }
+        }
 
         public IEquipmentManager EquipmentManager
         {
