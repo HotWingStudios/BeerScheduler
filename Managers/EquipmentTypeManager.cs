@@ -20,7 +20,7 @@ namespace BeerScheduler.Managers
             try
             {
                 await EquipmentTypeAccessor.SaveEquipmentType(equipmentType);
-                Logger.Log($"Equipment type deleted - Id: {equipmentTypeId}", TraceEventType.Information);
+                Logger.Log(string.Format("Equipment type deleted - Id: {0}", equipmentTypeId), TraceEventType.Information);
 
                 // update the equipment type for existing equipment with the deleted type
                 var equipments = await EquipmentAccessor.GetEquipmentByType(equipmentTypeId);
@@ -33,7 +33,7 @@ namespace BeerScheduler.Managers
                     }
                     catch (Exception ex)
                     {
-                        Logger.Log($"Could not reassign equipment Type - EquipmentId: {equipment.EquipmentId}", TraceEventType.Error, ex);
+                        Logger.Log(string.Format("Could not reassign equipment Type - EquipmentId: {0}", equipment.EquipmentId), TraceEventType.Error, ex);
                     }
                 }
                 return true;
