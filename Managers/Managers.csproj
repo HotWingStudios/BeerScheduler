@@ -52,6 +52,7 @@
     <Compile Include="EquipmentManager.cs" />
     <Compile Include="EquipmentTypeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

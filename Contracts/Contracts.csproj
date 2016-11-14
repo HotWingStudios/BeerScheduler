@@ -73,6 +73,7 @@
       <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.1.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -105,10 +106,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IEquipmentAccessor.cs" />
-    <Compile Include="IEquipmentManager.cs" />
-    <Compile Include="IEquipmentTypeAccessor.cs" />
-    <Compile Include="IEquipmentTypeManager.cs" />
+    <Compile Include="Accessors\IEquipmentAccessor.cs" />
+    <Compile Include="Managers\IEquipmentManager.cs" />
+    <Compile Include="Accessors\IEquipmentTypeAccessor.cs" />
+    <Compile Include="Managers\IEquipmentTypeManager.cs" />
+    <Compile Include="Accessors\IUserAccessor.cs" />
+    <Compile Include="Managers\IUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

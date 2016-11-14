@@ -16,9 +16,23 @@ namespace BeerScheduler.Managers
 
         private IEquipmentTypeAccessor equipmentTypeAccessor;
 
+        private IUserAccessor userAccessor;
+
         #endregion
 
         #region Properties
+
+        public IUserAccessor UserAccessor
+        {
+            get
+            {
+                return userAccessor ?? (userAccessor = ClassFactory.CreateClass<IUserAccessor>());
+            }
+            set
+            {
+                userAccessor = value;
+            }
+        }
 
         public IEquipmentAccessor EquipmentAccessor
         {
