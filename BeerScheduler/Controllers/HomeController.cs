@@ -13,6 +13,7 @@ using System.Web.Mvc;
 
 namespace BeerScheduler.Controllers
 {
+    [Authorize]
     public class HomeController : BaseController
     {
         public ActionResult Index()
