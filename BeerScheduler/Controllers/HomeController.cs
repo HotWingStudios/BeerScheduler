@@ -74,10 +74,5 @@ namespace BeerScheduler.Controllers
 
             return RedirectToAction("ManageEquipmentTypes");
         }
-
-        public async Task<ActionResult> ViewSchedule(long equipmentTypeId)
-        {
-            return RedirectToAction("ManageEquipmentTypes");
-        }
     }
 }
