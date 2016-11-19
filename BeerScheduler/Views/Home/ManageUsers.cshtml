@@ -1,0 +1,68 @@
+﻿@model BeerScheduler.Web.Models.ManageUsersViewModel
+
+@{
+    ViewBag.Title = "Manage Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewBag.Title</h1>
+
+@using (@Html.BeginForm("AddUser", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="h3">Add new user</h2>
+            <div class="form-inline">
+                <div class="form-group">
+                    <label class="sr-only" for="emailAddress">Email address</label>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", required = "required", type = "email", id = "emailAddress", PlaceHolder = "Email address" })
+                    @Html.ValidationMessageFor(m => m.Email, string.Empty, new { @class = "text-danger" })
+                </div>
+                <input type="submit" class="btn btn-primary" value="Add User" />
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h2 class="h3">Current users</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Email Address</th>
+                    <th>Activated</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.Users)
+                {
+                    <tr>
+                        <td>@user.Email</td>
+                        <td>@(user.Activated ? "Yes" : "No")</td>
+                        <td>
+                            @if (user.UserId != Model.CurrentUserId)
+                            {
+                                <form action="@Url.Action("DeleteUser", "Home")" method="POST" class="deleteForm text-right">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="userId" value="@user.UserId" />
+                                    <input type="submit" class="btn btn-danger" value="Delete" />
+                                </form>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $('.deleteForm').submit(function () {
+            return confirm("Are you sure you wish to delete this user?");
+        });
+    </script>
+}

@@ -12,7 +12,8 @@ namespace BeerScheduler.Managers
     {
         public async Task Delete(User user)
         {
-            await UserAccessor.Delete(user);
+            user.Deleted = true;
+            await UserAccessor.Save(user);
         }
 
         public async Task DeleteById(long id)
@@ -40,6 +41,11 @@ namespace BeerScheduler.Managers
             return await UserAccessor.GetById(userId);
         }
 
+        public async Task<IEnumerable<User>> GetUsersAsync(bool includeDeleted = false)
+        {
+            return await UserAccessor.GetUsersAsync(includeDeleted);
+        }
+
         public IEnumerable<User> GetUsers(bool includeDeleted = false)
         {
             return UserAccessor.GetUsers(includeDeleted);
@@ -50,7 +56,7 @@ namespace BeerScheduler.Managers
             await UserAccessor.Save(user);
         }
 
-        public void SendUserInvitation(string email, string callbackUrl)
+        public async Task SendUserInvitation(string email, string callbackUrl)
         {
             throw new NotImplementedException();
         }

@@ -18,9 +18,23 @@ namespace BeerScheduler.Web.Controllers
 
         private IUserManager userManager;
 
+        private INotificationManager notificationManager;
+
         #endregion
 
         #region Properties
+
+        public INotificationManager NotificationManager
+        {
+            get
+            {
+                return notificationManager ?? (notificationManager = ClassFactory.CreateClass<INotificationManager>());
+            }
+            set
+            {
+                notificationManager = value;
+            }
+        }
 
         public IUserManager UserManager
         {

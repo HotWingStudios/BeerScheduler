@@ -195,9 +195,14 @@ namespace BeerScheduler.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult ResetPassword(string code)
+        public ActionResult ResetPassword(int userId, string code)
         {
-            return code == null ? View("Login") : View();
+            if (!this.IdentityUserManager.VerifyUserToken(userId, "ResetPassword", code))
+            {
+                return this.RedirectToAction("Login");
+            }
+
+            return code == null ? this.View("Error") : this.View();
         }
 
         [HttpPost]
@@ -241,23 +246,7 @@ namespace BeerScheduler.Controllers
         {
             return this.View();
         }
-
-        //[AllowAnonymous]
-        //public ActionResult Contact()
-        //{
-        //    return View(new ContactViewModel());
-        //}
-
-        //[HttpPost]
-        //[AllowAnonymous]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Contact(ContactViewModel model)
-        //{
-        //    LocationManager.SendContactEmail(model.Email, model.FullName, model.Business, model.Message);
-        //    return View("ContactConfirm");
-        //}
-
-        //
+        
         // POST: /Manage/ChangePassword
         [HttpPost]
         [ValidateAntiForgeryToken]

@@ -11,9 +11,12 @@ namespace BeerScheduler.Accessors
 {
     public class UserAccessor : BaseAccessor, IUserAccessor
     {
-        public Task Delete(User user)
+        public async Task Delete(User user)
         {
-            throw new NotImplementedException();
+            using (var db = CreateDatabaseContext())
+            {
+                
+            }
         }
 
         public Task DeleteById(long id)
@@ -47,12 +50,32 @@ namespace BeerScheduler.Accessors
 
         public IEnumerable<User> GetUsers(bool includeDeleted = false)
         {
-            throw new NotImplementedException();
+            using (var db = CreateDatabaseContext())
+            {
+                if (includeDeleted)
+                {
+                    return db.Users.ToList();
+                }
+                else
+                {
+                    return db.Users.Where(x => !x.Deleted).ToList();
+                }
+            }
         }
 
-        public Task<IEnumerable<User>> GetUsersAsync(bool includeDeleted = false)
+        public async Task<IEnumerable<User>> GetUsersAsync(bool includeDeleted = false)
         {
-            throw new NotImplementedException();
+            using (var db = CreateDatabaseContext())
+            {
+                if (includeDeleted)
+                {
+                    return await db.Users.ToListAsync();
+                }
+                else
+                {
+                    return await db.Users.Where(x => !x.Deleted).ToListAsync();
+                }
+            }
         }
 
         public async Task Save(User user)
@@ -75,6 +98,7 @@ namespace BeerScheduler.Accessors
                     existingUser.LastName = user.LastName;
                     existingUser.PasswordHash = user.PasswordHash;
                     existingUser.SecurityStamp = user.SecurityStamp;
+                    existingUser.Deleted = user.Deleted;
                 }
 
                 await db.SaveChangesAsync();
