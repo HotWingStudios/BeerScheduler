@@ -12,6 +12,9 @@ namespace BeerScheduler.Contracts
     public interface IUserManager
     {
         [OperationContract]
+        Task<IEnumerable<User>> GetUsersAsync(bool includeDeleted = false);
+
+        [OperationContract]
         IEnumerable<User> GetUsers(bool includeDeleted = false);
 
         [OperationContract]
@@ -30,10 +33,7 @@ namespace BeerScheduler.Contracts
         Task Delete(User user);
 
         [OperationContract]
-        Task DeleteById(long id);
-
-        [OperationContract]
-        void SendUserInvitation(string email, string callbackUrl);
+        Task SendUserInvitation(string email, string callbackUrl);
 
         [OperationContract]
         void ForgotPassword(string email, string callbackUrl);

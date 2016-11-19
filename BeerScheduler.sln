@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessorTests", "AccessorTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelTests", "ModelTests\ModelTests.csproj", "{2A55B0C7-E52C-47DF-8304-43A6B4C64F99}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationAccessors", "NotificationAccessor\NotificationAccessors.csproj", "{F7CB8293-260F-4164-B784-3E05F7625133}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{A8F46413-565C-4778-AAC2-A54ACE0658AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A55B0C7-E52C-47DF-8304-43A6B4C64F99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2A55B0C7-E52C-47DF-8304-43A6B4C64F99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7CB8293-260F-4164-B784-3E05F7625133}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7CB8293-260F-4164-B784-3E05F7625133}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7CB8293-260F-4164-B784-3E05F7625133}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7CB8293-260F-4164-B784-3E05F7625133}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,5 +110,6 @@ Global
 		{575B7A00-8A85-4A92-BF6C-6084C4C903D4} = {018A2B2E-56B7-4D7A-8F56-666E8E6E8DBA}
 		{A8F46413-565C-4778-AAC2-A54ACE0658AC} = {018A2B2E-56B7-4D7A-8F56-666E8E6E8DBA}
 		{2A55B0C7-E52C-47DF-8304-43A6B4C64F99} = {018A2B2E-56B7-4D7A-8F56-666E8E6E8DBA}
+		{F7CB8293-260F-4164-B784-3E05F7625133} = {DC080353-CB67-4FBE-80BA-D53C4BE794C9}
 	EndGlobalSection
 EndGlobal

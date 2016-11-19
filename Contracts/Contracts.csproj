@@ -107,10 +107,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Accessors\IEquipmentAccessor.cs" />
+    <Compile Include="Accessors\ISendGridAccessor.cs" />
     <Compile Include="Managers\IEquipmentManager.cs" />
     <Compile Include="Accessors\IEquipmentTypeAccessor.cs" />
     <Compile Include="Managers\IEquipmentTypeManager.cs" />
     <Compile Include="Accessors\IUserAccessor.cs" />
+    <Compile Include="Managers\INotificationManager.cs" />
     <Compile Include="Managers\IUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
