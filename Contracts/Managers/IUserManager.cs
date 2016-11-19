@@ -33,9 +33,6 @@ namespace BeerScheduler.Contracts
         Task Delete(User user);
 
         [OperationContract]
-        Task DeleteById(long id);
-
-        [OperationContract]
         Task SendUserInvitation(string email, string callbackUrl);
 
         [OperationContract]

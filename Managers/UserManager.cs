@@ -16,11 +16,6 @@ namespace BeerScheduler.Managers
             await UserAccessor.Save(user);
         }
 
-        public async Task DeleteById(long id)
-        {
-            await UserAccessor.DeleteById(id);
-        }
-
         public void ForgotPassword(string email, string callbackUrl)
         {
             throw new NotImplementedException();
