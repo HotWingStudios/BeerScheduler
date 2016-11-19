@@ -36,8 +36,8 @@ namespace BeerScheduler.Managers
             SendGridAccessor.Send(
                 email,
                 "Time to Get Your Beer Schedule in Order!",
-                $@"<p>You're invited to join a team on BeerScheduler</p>
-                    <p><a href='{callbackUrl}'>Click Here</a> to complete your account activation</p>"
+                string.Format(@"<p>You're invited to join a team on BeerScheduler</p>
+                    <p><a href='{0}'>Click Here</a> to complete your account activation</p>",callbackUrl)
                 );
         }
     }
