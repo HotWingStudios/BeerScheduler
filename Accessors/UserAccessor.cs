@@ -11,19 +11,6 @@ namespace BeerScheduler.Accessors
 {
     public class UserAccessor : BaseAccessor, IUserAccessor
     {
-        public async Task Delete(User user)
-        {
-            using (var db = CreateDatabaseContext())
-            {
-                
-            }
-        }
-
-        public Task DeleteById(long id)
-        {
-            throw new NotImplementedException();
-        }
-
         public User GetByEmail(string email)
         {
             using (var db = CreateDatabaseContext())

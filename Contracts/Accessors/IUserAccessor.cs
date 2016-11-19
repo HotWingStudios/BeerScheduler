@@ -30,12 +30,6 @@ namespace BeerScheduler.Contracts
 
         [OperationContract]
         Task Save(User user);
-
-        [OperationContract]
-        Task Delete(User user);
-
-        [OperationContract]
-        Task DeleteById(long userId);
         #endregion
     }
 }
