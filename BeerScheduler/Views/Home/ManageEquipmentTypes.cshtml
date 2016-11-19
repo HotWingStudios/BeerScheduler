@@ -27,8 +27,11 @@
 }
 <br/>
 <table class="table">
+    <col width="50%">
+    <col width="25%">
+    <col width="25%">
     <tr>
-        <th>
+        <th colspan="3">
             Name
         </th>
         <th></th>
@@ -39,6 +42,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("View Schedule","ViewSchedule", "Home", new {equipmentTypeId = item.EquipmentTypeId }, null)
         </td>
         <td>
             @Html.ActionLink("Delete", "DeleteEquipmentType", "Home", new { equipmentTypeId = item.EquipmentTypeId }, null)
