@@ -1,4 +1,4 @@
-﻿ using BeerScheduler.Contracts;
+﻿using BeerScheduler.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
