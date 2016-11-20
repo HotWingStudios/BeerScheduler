@@ -15,7 +15,7 @@ namespace BeerScheduler.Accessors
         {
             using (var db = CreateDatabaseContext())
             {
-                return await db.Equipment.Where(x => !x.Deleted).ToListAsync();
+                return await db.Equipment.Include(x => x.EquipmentType).Where(x => !x.Deleted).ToListAsync();
             }
         }
 

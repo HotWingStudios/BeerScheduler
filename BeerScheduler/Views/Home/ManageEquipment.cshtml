@@ -1,0 +1,59 @@
+﻿@model BeerScheduler.Web.Models.ManageEquipmentViewModel
+
+@{
+    ViewBag.Title = "Manage Equipment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage Equipment</h2>
+<br />
+<div class="row">
+    <div class="col-sm-12">
+        <form action="/Home/AddEquipment">
+            <input type="submit" class="btn btn-primary" value="Add Equipment" />
+        </form>
+    </div>
+</div>
+<br/>
+
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Date Acquired</th>
+                <th>Equipment Type</th>
+            </tr>
+
+            @foreach (var item in Model.EquipmentList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(temp => item.Name)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(temp => item.Description)
+                    </td>
+
+                    <td>
+                        @item.DateAquired.ToString("MM/dd/yyyy")
+                    </td>
+
+                    <td>@item.EquipmentType.Name</td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "EditEquipment", "Home", new {equipmentId = item.EquipmentId}, null)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteEquipment", "Home", new { equipmentId = item.EquipmentId }, null)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+

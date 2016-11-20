@@ -1,0 +1,63 @@
+﻿@model BeerScheduler.Web.Models.AddEquipmentModel
+@{
+    ViewBag.Title = "Add Equipment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Equipment</h2>
+
+<br />
+@using (Html.BeginForm("AddNewEquipment", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="h3">Add Equipment</h2>
+            <div class="form-inline">
+                <div class="form-group">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Equipment Type
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                Date Acquired
+                            </th>
+                            <th>
+
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DropDownList("EquipmentType", @Model.OptionList, new { @class = "form-control", type = "text", id = "equipmentType"})
+                            </td>
+                            <td>
+                                @Html.TextBox("Name", null, new { @class = "form-control", required = "required", type = "text", id = "name", PlaceHolder = "Type Name" })
+                            </td>
+                            <td>
+                                @Html.TextArea("Description", null, 3, 24, new { @class = "form-control", required = "required", type = "text", id = "description", PlaceHolder = "Type Description" })
+                            </td>
+                            <td>
+                                @Html.TextBox("Date", null, new { @class = "form-control", required = "required", type = "text", id = "date", PlaceHolder = "Type Date(MM/DD/YYYY)" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" class="btn btn-primary" value="Add Equipment" />
+                            </td>
+                        </tr>
+                    </table>
+                   <br />
+                </div>
+                
+
+            </div>
+        </div>
+    </div>
+}
