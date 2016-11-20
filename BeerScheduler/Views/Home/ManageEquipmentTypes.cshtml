@@ -1,4 +1,4 @@
-﻿@model BeerScheduler.Web.Models.ManageEquipmentTypesViewModel
+﻿ @model BeerScheduler.Web.Models.ManageEquipmentTypesViewModel
 
 @{
     ViewBag.Title = "Manage Equipment Types";
@@ -21,6 +21,7 @@
                     @Html.ValidationMessageFor(m => m.Name, string.Empty, new { @class = "text-danger" })
                 </div>
                 <input type="submit" class="btn btn-primary" value="Add Type" />
+    
             </div>
         </div>
     </div>

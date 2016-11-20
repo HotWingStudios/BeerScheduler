@@ -211,8 +211,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AddEquipmentModel.cs" />
+    <Compile Include="Models\EditEquipmentModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageEquipmentTypesViewModel.cs" />
+    <Compile Include="Models\ManageEquipmentViewModel.cs" />
     <Compile Include="Models\ManageUsersViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -294,6 +297,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\ManageEquipmentTypes.cshtml" />
     <Content Include="Views\Home\ManageUsers.cshtml" />
+    <Content Include="Views\Home\ManageEquipment.cshtml" />
+    <Content Include="Views\Home\EditEquipment.cshtml" />
+    <Content Include="Views\Home\AddEquipment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

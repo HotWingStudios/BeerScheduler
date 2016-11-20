@@ -69,6 +69,13 @@ namespace BeerScheduler.Controllers
             return View();
         }
 
+        public async Task<ActionResult> ManageEquipment()
+        {
+            var model = new ManageEquipmentViewModel(await EquipmentManager.GetAllEquipment());
+            
+            return View(model);
+        }
+
         public async Task<ActionResult> ManageEquipmentTypes()
         {
             var model = new ManageEquipmentTypesViewModel();
@@ -178,6 +185,49 @@ namespace BeerScheduler.Controllers
 
             // return based on admin Type
             return this.RedirectToAction("ManageUsers");
+        }
+
+        public async Task<ActionResult> AddEquipment()
+        {
+            var model = new AddEquipmentModel();
+            model.EquipmentTypes = await EquipmentTypeManager.GetEquipmentTypes();
+            model.OptionList = from m in model.EquipmentTypes select new SelectListItem {Text = m.Name, Value = m.EquipmentTypeId.ToString() };
+            return View(model);
+        }
+
+        public ActionResult EditEquipment(long equipmentId = 0)
+        {
+            if(equipmentId == 0)
+            {
+                return RedirectToAction("ManageEquipment");
+            }
+            return View();
+        }
+
+        public async Task<ActionResult> DeleteEquipment(long equipmentId)
+        {
+            await EquipmentManager.DeleteEquipment(equipmentId); 
+
+            return RedirectToAction("ManageEquipment");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AddNewEquipment(string name, string description, string date, string equipmentType)
+        {
+            Equipment temp = new Equipment();
+            try
+            {
+                temp.EquipmentTypeId = Convert.ToInt64(equipmentType);
+                temp.DateAquired = DateTime.Parse(date);
+                temp.Description = description;
+                temp.Name = name;
+            }catch(Exception e)
+            {
+                return RedirectToAction("AddEquipment");
+            }
+            await EquipmentManager.SaveEquipment(temp);
+            return RedirectToAction("ManageEquipment");
         }
     }
 }
