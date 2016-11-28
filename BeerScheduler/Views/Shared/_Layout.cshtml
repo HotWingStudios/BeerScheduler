@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beer Scheduler - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+    <!--Styles.Render("~/Content/materialize.min.css")-->
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
@@ -36,12 +37,13 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - BeerScheduler</p>
         </footer>
     </div>
-
+    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <!--Scripts.Render("~/Scripts/materialize.min.js")-->
     @RenderSection("scripts", required: false)
 </body>
 </html>

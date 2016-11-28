@@ -9,7 +9,7 @@
 <br />
 <div class="row">
     <div class="col-sm-12">
-        <form action="/Home/AddEquipment">
+        <form action="/Home/AddorEditEquipment">
             <input type="submit" class="btn btn-primary" value="Add Equipment" />
         </form>
     </div>
@@ -44,7 +44,7 @@
                     <td>@item.EquipmentType.Name</td>
 
                     <td>
-                        @Html.ActionLink("Edit", "EditEquipment", "Home", new {equipmentId = item.EquipmentId}, null)
+                        @Html.ActionLink("Edit", "AddorEditEquipment", "Home", new {equipmentId = item.EquipmentId}, null)
                     </td>
 
                     <td>

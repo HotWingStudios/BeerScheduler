@@ -187,6 +187,52 @@ namespace BeerScheduler.Controllers
             return this.RedirectToAction("ManageUsers");
         }
 
+        // stuff to look at
+
+        [HttpGet]
+        public async Task<ActionResult> AddorEditEquipment(long? equipmentId)
+        {
+            var model = new AddOrEditEquipmentViewModel();
+            var equipment = new Equipment();
+            if(equipmentId != null)
+            {
+                equipment = await EquipmentManager.GetEquipment((long)equipmentId);
+                model.Title = "Edit Equiment";
+            }else
+            {
+                equipment.DateAquired = DateTime.Now;
+                model.Title = "Add Equipment";
+            }
+
+            model.Equipment = equipment;
+            model.EquipmentTypes = await EquipmentTypeManager.GetEquipmentTypes();
+
+            model.SelectTypes = model.EquipmentTypes.Select(x => new SelectListItem {Value = x.EquipmentTypeId.ToString(), Text = x.Name, Selected = (model.Equipment.EquipmentTypeId == x.EquipmentTypeId) ? true : false });
+            model.SelectedID = equipment.EquipmentTypeId.ToString();
+            return View("AddOrEditEquipment", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AddorEditEquipment(AddOrEditEquipmentViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                
+                //foreach(var error in ModelState.Values.Select(x => x.Errors))
+                //{
+                    
+                //}
+                return View("AddOrEditEquipment", model);
+            }
+
+            await EquipmentManager.SaveEquipment(model.Equipment);
+
+            return RedirectToAction("ManageEquipment");
+        }
+
+        // end of stuff to look at
+
         public async Task<ActionResult> AddEquipment()
         {
             var model = new AddEquipmentModel();
