@@ -197,7 +197,7 @@ namespace BeerScheduler.Controllers
             if(equipmentId != null)
             {
                 equipment = await EquipmentManager.GetEquipment((long)equipmentId);
-                model.Title = "Edit Equiment";
+                model.Title = "Edit Equipment";
             }else
             {
                 equipment.DateAquired = DateTime.Now;

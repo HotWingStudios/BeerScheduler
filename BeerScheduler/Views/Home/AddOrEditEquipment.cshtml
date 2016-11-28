@@ -1,0 +1,66 @@
+﻿@model BeerScheduler.Web.Models.AddOrEditEquipmentViewModel
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>@Model.Title</h2>
+
+<br />
+@using (Html.BeginForm("AddOrEditEquipment", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="col-md-12">
+            <div class="form-inline">
+                <div class="form-group">
+                    <div class="row">
+                        @Html.HiddenFor(m => m.Equipment.EquipmentId )
+                        @Html.LabelFor(m => m.Equipment.EquipmentType)
+                        <div>
+
+
+                            @try
+                            {
+                                @Html.DropDownListFor(m => m.Equipment.EquipmentTypeId, Model.SelectTypes, new { @class = "form-control", required = "required" })
+                            }
+                            catch (Exception e)
+                            {
+
+                            }
+                        </div>
+                    </div>
+
+                    <br />
+
+                    @Html.LabelFor(m => m.Equipment.Name)
+                    <div>
+                        @Html.TextBoxFor(m => m.Equipment.Name, new { @class = "form-control", required = "required" })
+                        @Html.ValidationMessageFor(m => m.Equipment.Name, string.Empty, new { @class = "text-danger" })
+                    </div>
+
+                    <br />
+
+                    @Html.LabelFor(m => m.Equipment.Description);
+                    <div>
+                        @Html.TextAreaFor(m => m.Equipment.Description, 3, 23, new { @class = "form-control", required = "required" })
+                    </div>
+
+                    <br />
+
+                    @Html.LabelFor(m => m.Equipment.DateAquired)
+                    <div>
+                        @Html.TextBoxFor(m => m.Equipment.DateAquired, "{0:MM/dd/yyyy}", new { @class = "form-control", required = "required" })
+                    </div>
+
+                    <br />
+                    <input type="submit" class="btn btn-primary" value="@Model.Title" />
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+}
