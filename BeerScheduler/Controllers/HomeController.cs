@@ -207,8 +207,12 @@ namespace BeerScheduler.Controllers
             model.Equipment = equipment;
             model.EquipmentTypes = await EquipmentTypeManager.GetEquipmentTypes();
 
-            model.SelectTypes = model.EquipmentTypes.Select(x => new SelectListItem {Value = x.EquipmentTypeId.ToString(), Text = x.Name, Selected = (model.Equipment.EquipmentTypeId == x.EquipmentTypeId) ? true : false });
-            model.SelectedID = equipment.EquipmentTypeId.ToString();
+            model.SelectTypes = model.EquipmentTypes.Select(x => new SelectListItem {
+                Value = x.EquipmentTypeId.ToString(),
+                Text = x.Name,
+                Selected = model.Equipment.EquipmentTypeId == x.EquipmentTypeId ? true : false
+            });
+            model.SelectedID = equipment.EquipmentTypeId;
             return View("AddOrEditEquipment", model);
         }
 

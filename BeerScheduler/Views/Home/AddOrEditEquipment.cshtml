@@ -15,22 +15,23 @@
         <div class="col-md-12">
             <div class="form-inline">
                 <div class="form-group">
-                    
-                        @Html.HiddenFor(m => m.Equipment.EquipmentId )
-                        @Html.LabelFor(m => m.Equipment.EquipmentType)
-                        <div>
+
+                    @Html.HiddenFor(m => m.Equipment.EquipmentId)
+                    @Html.LabelFor(m => m.Equipment.EquipmentType)
+                    <div>
 
 
-                            @try
-                            {
-                                @Html.DropDownListFor(m => m.Equipment.EquipmentTypeId, Model.SelectTypes, new { @class = "form-control", required = "required" })
-                            }
-                            catch (Exception e)
-                            {
+                        @try
+                        {
+                            @Html.DropDownListFor(m => m.Equipment.EquipmentTypeId, Model.SelectTypes, new { @class = "form-control", required = "required" })
+                            @Html.ValidationMessageFor(m => m.Equipment.EquipmentTypeId, string.Empty, new { @class = "text-danger" })
+                        }
+                        catch (Exception e)
+                        {
 
-                            }
-                        </div>
-                    
+                        }
+                    </div>
+
 
                     <br />
 
@@ -45,6 +46,7 @@
                     @Html.LabelFor(m => m.Equipment.Description);
                     <div>
                         @Html.TextAreaFor(m => m.Equipment.Description, 3, 23, new { @class = "form-control", required = "required" })
+                        @Html.ValidationMessageFor(m => m.Equipment.Description, string.Empty, new { @class = "text-danger" })
                     </div>
 
                     <br />
@@ -52,6 +54,7 @@
                     @Html.LabelFor(m => m.Equipment.DateAquired)
                     <div>
                         @Html.TextBoxFor(m => m.Equipment.DateAquired, "{0:MM/dd/yyyy}", new { @class = "form-control", required = "required" })
+                        @Html.ValidationMessageFor(m => m.Equipment.DateAquired, string.Empty, new { @class = "text-danger" })
                     </div>
 
                     <br />

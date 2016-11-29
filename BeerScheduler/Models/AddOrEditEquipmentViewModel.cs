@@ -16,7 +16,7 @@ namespace BeerScheduler.Web.Models
 
         public String Title { get; set; }
 
-        public String SelectedID { get; set; }
+        public long SelectedID { get; set; }
 
         public IEnumerable<SelectListItem> SelectTypes { get; set; }
 
