@@ -1,0 +1,79 @@
+﻿@model BeerScheduler.Web.Models.ManageEquipmentViewModel
+
+@{
+    ViewBag.Title = "Manage Equipment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage Equipment</h2>
+<br />
+<div class="row">
+    <div class="col-sm-12">
+        <form action="/Home/AddorEditEquipment">
+            <input type="submit" class="btn btn-primary" value="Add Equipment" />
+        </form>
+    </div>
+</div>
+<br/>
+
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Date Acquired</th>
+                <th>Equipment Type</th>
+            </tr>
+
+            @foreach (var item in Model.EquipmentList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(temp => item.Name)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(temp => item.Description)
+                    </td>
+
+                    <td>
+                        @item.DateAquired.ToString("MM/dd/yyyy")
+                    </td>
+
+                    <td>
+                        @item.EquipmentType.Name
+                    </td>
+
+                    <td>
+                        <!--Html.ActionLink("Edit", "AddorEditEquipment", "Home", new {equipmentId = item.EquipmentId}, null)-->
+                        <form action="@Url.Action("AddorEditEquipment", "Home")" method="get">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="equipmentId" value="@item.EquipmentId" />
+                            <input type="submit" class="btn btn-primary" value="Edit" />
+                        </form>
+                    </td>
+                    <td>
+                        <!--Html.ActionLink("Delete", "DeleteEquipment", "Home", new { equipmentId = item.EquipmentId }, null)-->
+                        <form action="@Url.Action("DeleteEquipment", "Home", new { equipmentId = item.EquipmentId }, null)" method="post" class="deleteButton">
+                            @Html.AntiForgeryToken()
+                            <input type="submit" class="btn btn-danger" value="Delete" />
+                        </form>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+@section scripts {
+    <script>
+        $('.deleteButton').submit(function () {
+            return confirm("Are you sure you wish to delete this piece of equipment?");
+        });
+    </script>
+}
+
+
+
+
