@@ -21,15 +21,10 @@
                     <div>
 
 
-                        @try
-                        {
+                        
                             @Html.DropDownListFor(m => m.Equipment.EquipmentTypeId, Model.SelectTypes, new { @class = "form-control", required = "required" })
                             @Html.ValidationMessageFor(m => m.Equipment.EquipmentTypeId, string.Empty, new { @class = "text-danger" })
-                        }
-                        catch (Exception e)
-                        {
-
-                        }
+                        
                     </div>
 
 

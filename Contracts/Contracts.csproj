@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Accessors\IEquipmentAccessor.cs" />
+    <Compile Include="Accessors\IEquipmentScheduleAccessor.cs" />
     <Compile Include="Accessors\ISendGridAccessor.cs" />
     <Compile Include="Managers\IEquipmentManager.cs" />
     <Compile Include="Accessors\IEquipmentTypeAccessor.cs" />

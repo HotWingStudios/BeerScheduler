@@ -1,4 +1,7 @@
 ﻿using BeerScheduler.Controllers;
+using BeerScheduler.DataContracts;
+using BeerScheduler.Managers;
+using BeerScheduler.Web.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -35,6 +38,23 @@ namespace BeerScheduler.ControllerTests
         public void HomeController_Init()
         {
             Assert.IsNotNull(controller);
+        }
+
+        [TestMethod]
+        public async void HomeController_AddEquipment()
+        {
+            var model = new AddOrEditEquipmentViewModel();
+            var equipment = new Equipment();
+
+
+            controller.AddEquipmentType("test");
+            var manager = new EquipmentTypeManager();
+            model.Equipment = new Equipment
+            {
+                Name = "Test",
+               
+                
+            }
         }
 
         #endregion
