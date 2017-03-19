@@ -212,6 +212,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddEquipmentModel.cs" />
+    <Compile Include="Models\AddOrEditScheduleViewModel.cs" />
     <Compile Include="Models\AddOrEditEquipmentViewModel.cs" />
     <Compile Include="Models\EditEquipmentModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -304,6 +305,7 @@
     <Content Include="Views\Home\EditEquipment.cshtml" />
     <Content Include="Views\Home\AddEquipment.cshtml" />
     <Content Include="Views\Home\AddOrEditEquipment.cshtml" />
+    <Content Include="Views\Home\AddOrEditSchedule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

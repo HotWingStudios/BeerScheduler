@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 using BeerScheduler.DataContracts;
 using System.Data.Entity;
 
-namespace BeerScheduler.Contracts.Accessors
+namespace BeerScheduler.Contracts
 {
     public interface IEquipmentScheduleAccessor
     {
         Task<IEnumerable<EquipmentSchedule>> GetAllSchedules();
+
+        Task<EquipmentSchedule> GetSchedule(long scheduleId);
 
         Task<IEnumerable<EquipmentSchedule>> GetEquipmentSchedules(long equipmentId);
 

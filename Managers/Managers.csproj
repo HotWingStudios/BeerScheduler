@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="BaseManager.cs" />
     <Compile Include="EquipmentManager.cs" />
+    <Compile Include="EquipmentScheduleManager.cs" />
     <Compile Include="EquipmentTypeManager.cs" />
     <Compile Include="NotificationManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,6 +60,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Accessors\Accessors.csproj">
+      <Project>{411B5296-2C8C-442D-8D7D-3630784CF05F}</Project>
+      <Name>Accessors</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Contracts\Contracts.csproj">
       <Project>{27F29C2A-C2F9-4114-BD5F-02A38B15A99C}</Project>
       <Name>Contracts</Name>

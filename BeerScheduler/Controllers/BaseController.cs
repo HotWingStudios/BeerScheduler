@@ -20,6 +20,8 @@ namespace BeerScheduler.Web.Controllers
 
         private INotificationManager notificationManager;
 
+        private IEquipmentScheduleManager equipmentScheduleManager;
+
         #endregion
 
         #region Properties
@@ -69,6 +71,19 @@ namespace BeerScheduler.Web.Controllers
             set
             {
                 equipmentTypeManager = value;
+            }
+        }
+
+        public IEquipmentScheduleManager EquipmentScheduleManager
+        {
+            get
+            {
+                return equipmentScheduleManager ?? (equipmentScheduleManager = ClassFactory.CreateClass<IEquipmentScheduleManager>());
+            }
+
+            set
+            {
+                equipmentScheduleManager = value;
             }
         }
 

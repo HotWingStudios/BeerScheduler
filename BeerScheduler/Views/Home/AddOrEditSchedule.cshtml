@@ -1,0 +1,47 @@
+﻿@model BeerScheduler.Web.Models.AddOrEditScheduleViewModel
+
+@{
+    ViewBag.Title = "AddEquipmentSchedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+</br>
+<h2>@Model.Title</h2>
+
+</br>
+
+@using (Html.BeginForm("AddOrEditSchedule", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="col-md-12">
+            <div class="form-inline">
+                <div class="form-group">
+                    @Html.HiddenFor(m => m.Schedule.EquipmentId)
+                    @Html.LabelFor(m => m.Schedule.Equipment)
+
+                    <div>
+                        @Html.DropDownListFor(m => m.Schedule.EquipmentId, Model.Selectors, new { @class = "form-control", required = "required" })
+                    </div>
+
+                    <br/>
+                    @Html.LabelFor(m => m.Schedule.StartDate)
+                    <div>
+                        @Html.TextAreaFor(m => m.Schedule.StartDate, 1, 23, new { @class = "form-control", required = "required"} )
+                    </div>
+
+                    <br />
+                    @Html.LabelFor(m => m.Schedule.EndDate )
+                    <div>
+                        @Html.TextAreaFor(m => m.Schedule.EndDate, 1, 23, new { @class = "form-control", required = "required" })
+                    </div>
+
+                    <br />
+                    <input type="submit" class="btn btn-primary" value="@Model.Title" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

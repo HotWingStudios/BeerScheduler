@@ -279,5 +279,63 @@ namespace BeerScheduler.Controllers
             await EquipmentManager.SaveEquipment(temp);
             return RedirectToAction("ManageEquipment");
         }
+
+        [HttpGet]
+        public async Task<ActionResult> AddOrEditSchedule(long? scheduleId)
+        {
+            var model = new AddOrEditScheduleViewModel();
+
+            
+            model.EquipmentList = await EquipmentManager.GetAllEquipment();
+
+           model.Selectors = from x in model.EquipmentList
+                              select new SelectListItem
+                              {
+                                  Text = x.Name,
+                                  Value = x.EquipmentId.ToString()
+                              };
+
+            
+            
+            if (scheduleId == null)
+            {
+                model.Title = "Add Schedule";
+                model.Schedule = new EquipmentSchedule();
+            }
+            else
+            {
+                model.Title = "Edit Schedule";
+                model.Schedule = await EquipmentScheduleManager.GetEquipmentSchedule(scheduleId.Value);
+                foreach(var item in model.Selectors)
+                {
+                    if(item.Value == model.Schedule.EquipmentId.ToString())
+                    {
+                        item.Selected = true;
+                    }
+                }
+            }
+            return View("AddOrEditSchedule", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AddOrEditSchedule(AddOrEditScheduleViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("AddOrEditSchedule", model);
+            }
+
+            await EquipmentScheduleManager.SaveEquipmentSchedule(model.Schedule);
+
+            return RedirectToAction("ManageEquipment");
+        }
+
+        public async Task<ActionResult> AddSchedule(long? scheduleId)
+        {
+            return await AddOrEditSchedule(scheduleId);
+        }
     }
+
+    
 }

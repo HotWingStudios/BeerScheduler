@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using BeerScheduler.DataContracts;
 using System.Data.Entity;
-using BeerScheduler.Contracts.Accessors;
 
 namespace BeerScheduler.Accessors
 {
     public class EquipmentScheduleAccessor : BaseAccessor, IEquipmentScheduleAccessor
     {
+
         public async Task<IEnumerable<EquipmentSchedule>> GetAllSchedules()
         {
             using (var db = CreateDatabaseContext())
@@ -30,6 +30,14 @@ namespace BeerScheduler.Accessors
         public async Task<EquipmentSchedule> GetCurrentSchedule(long equipmentId)
         {
             return await GetScheduleContaining(DateTime.Now, equipmentId);
+        }
+
+        public async Task<EquipmentSchedule> GetSchedule(long scheduleId)
+        {
+            using(var db = CreateDatabaseContext())
+            {
+                return await db.EquipmentSchedules.FirstOrDefaultAsync(x => x.EquipmentScheduleId == scheduleId && !x.Deleted);
+            }
         }
 
         public async Task<IEnumerable<EquipmentSchedule>> GetEquipmentSchedules(long equipmentId)

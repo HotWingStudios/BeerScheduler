@@ -111,6 +111,7 @@
     <Compile Include="Accessors\ISendGridAccessor.cs" />
     <Compile Include="Managers\IEquipmentManager.cs" />
     <Compile Include="Accessors\IEquipmentTypeAccessor.cs" />
+    <Compile Include="Managers\IEquipmentScheduleManager.cs" />
     <Compile Include="Managers\IEquipmentTypeManager.cs" />
     <Compile Include="Accessors\IUserAccessor.cs" />
     <Compile Include="Managers\INotificationManager.cs" />
