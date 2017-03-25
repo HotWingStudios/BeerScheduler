@@ -59,7 +59,7 @@ namespace BeerScheduler.Accessors
                 using (var db = CreateDatabaseContext())
                 {
                     var dbSchedule = await db.EquipmentSchedules.FirstOrDefaultAsync(x => x.EquipmentScheduleId == schedule.EquipmentScheduleId);
-
+                    
                     // create new schedule record
                     if (dbSchedule == null)
                     {

@@ -288,7 +288,7 @@ namespace BeerScheduler.Controllers
             
             model.EquipmentList = await EquipmentManager.GetAllEquipment();
 
-           model.Selectors = from x in model.EquipmentList
+            model.Selectors = from x in model.EquipmentList
                               select new SelectListItem
                               {
                                   Text = x.Name,
@@ -326,6 +326,9 @@ namespace BeerScheduler.Controllers
                 return View("AddOrEditSchedule", model);
             }
 
+            model.Schedule.Equipment = await EquipmentManager.GetEquipment(model.Schedule.EquipmentId);
+
+            model.Schedule.EquipmentId = long.Parse(model.Title); //This is seriously janky but it seems to work, planning to fix soon
             await EquipmentScheduleManager.SaveEquipmentSchedule(model.Schedule);
 
             return RedirectToAction("ManageEquipment");
