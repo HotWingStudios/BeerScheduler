@@ -50,12 +50,12 @@ namespace BeerScheduler.Accessors
 
         public async Task<EquipmentSchedule> SaveEquipmentSchedule(EquipmentSchedule schedule)
         {
-            if (GetScheduleContaining(schedule.StartDate, schedule.EquipmentId) == null || GetScheduleContaining(schedule.EndDate, schedule.EquipmentId) == null)
+            /*if (GetScheduleContaining(schedule.StartDate, schedule.EquipmentId) == null || GetScheduleContaining(schedule.EndDate, schedule.EquipmentId) == null)
             {
                 return null;
             }
             else
-            {
+            {*/
                 using (var db = CreateDatabaseContext())
                 {
                     var dbSchedule = await db.EquipmentSchedules.FirstOrDefaultAsync(x => x.EquipmentScheduleId == schedule.EquipmentScheduleId);
@@ -80,7 +80,7 @@ namespace BeerScheduler.Accessors
                 }
 
                 return schedule;
-            }
+            //}
         }
     }
 }

@@ -218,6 +218,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageEquipmentTypesViewModel.cs" />
     <Compile Include="Models\ManageEquipmentViewModel.cs" />
+    <Compile Include="Models\ManageScheduleViewModel.cs" />
     <Compile Include="Models\ManageUsersViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -306,6 +307,7 @@
     <Content Include="Views\Home\AddEquipment.cshtml" />
     <Content Include="Views\Home\AddOrEditEquipment.cshtml" />
     <Content Include="Views\Home\AddOrEditSchedule.cshtml" />
+    <Content Include="Views\Home\ManageSchedule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

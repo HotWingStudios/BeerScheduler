@@ -1,0 +1,69 @@
+﻿@model BeerScheduler.Web.Models.ManageScheduleViewModel
+@{
+    ViewBag.Title = "ManageSchedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage Schedule</h2>
+
+<div class="row">
+    <div class="col-sm-12">
+        <form action="/Home/AddorEditSchedule">
+            <input type="submit" class="btn btn-primary" value="Add Schedule" />
+        </form>
+    </div>
+</div>
+<br />
+
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table">
+            <tr>
+                <th>Equipment Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+            </tr>
+
+            @foreach (var item in Model.ScheduleList)
+            {
+                <tr>
+                    <td>
+                        @item.Equipment.Name
+                    </td>
+
+                    <td>
+                        @item.Schedule.StartDate
+                    </td>
+
+                    <td>
+                        @item.Schedule.EndDate
+                    </td>
+
+                    <td>
+                        <form action="@Url.Action("AddOrEditSchedule", "Home")" method="get">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="scheduleId" value="@item.Schedule.EquipmentScheduleId" />
+                            <input type="submit" class="btn btn-primary" value="Edit" />
+                        </form>
+                    </td>
+
+                    <td>
+                        <form action="@Url.Action("DeleteSchedule", "Home", new { scheduleId = item.Schedule.EquipmentScheduleId}, null)" method="post" class="deleteButton">
+                            @Html.AntiForgeryToken()
+                            <input type="submit" class="btn btn-danger" value="Delete" />
+                        </form>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $('.deleteButton').submit(function () {
+            return confirm("Are you sure you wish to delete this piece of equipment?");
+        });
+    </script>
+}

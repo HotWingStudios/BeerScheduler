@@ -285,6 +285,7 @@ namespace BeerScheduler.Controllers
         {
             var model = new AddOrEditScheduleViewModel();
 
+            var equipmentId = scheduleId == null ? -1 : (await EquipmentScheduleManager.GetEquipmentSchedule((long)scheduleId)).EquipmentId;
             
             model.EquipmentList = await EquipmentManager.GetAllEquipment();
 
@@ -292,7 +293,8 @@ namespace BeerScheduler.Controllers
                               select new SelectListItem
                               {
                                   Text = x.Name,
-                                  Value = x.EquipmentId.ToString()
+                                  Value = x.EquipmentId.ToString(),
+                                  Selected = x.EquipmentId == equipmentId
                               };
 
             
@@ -331,12 +333,47 @@ namespace BeerScheduler.Controllers
             model.Schedule.EquipmentId = long.Parse(model.Title); //This is seriously janky but it seems to work, planning to fix soon
             await EquipmentScheduleManager.SaveEquipmentSchedule(model.Schedule);
 
-            return RedirectToAction("ManageEquipment");
+            return RedirectToAction("ManageSchedule");
         }
 
         public async Task<ActionResult> AddSchedule(long? scheduleId)
         {
             return await AddOrEditSchedule(scheduleId);
+        }
+
+        public async Task<ActionResult> ManageSchedule()
+        {
+            Logger.Log("Entered Manage Schedule");
+            ManageScheduleViewModel model = new ManageScheduleViewModel();
+
+            var aggregate = new List<EquipmentAggregator>();
+
+            var schedules = await EquipmentScheduleManager.GetAllEquipmentSchedules();
+
+            foreach (var item in schedules)
+            {
+
+                var tempE = await EquipmentManager.GetEquipment(item.EquipmentId);
+
+                if (tempE != null)
+                {
+                    var temp = new EquipmentAggregator(item, tempE);
+                    aggregate.Add(temp);
+                }
+            }
+
+            model.ScheduleList = aggregate;
+
+            return View("ManageSchedule", model);
+        }
+
+        public async Task<ActionResult> DeleteSchedule(long scheduleId)
+        {
+            Logger.Log("Entered Delete Schedule");
+            await EquipmentScheduleManager.DeleteEquipmentSchedule(scheduleId);
+            
+
+            return RedirectToAction("ManageSchedule");
         }
     }
 
